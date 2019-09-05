@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
     'aa',
 ]
 
@@ -114,6 +115,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL = '/acesso_negado'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

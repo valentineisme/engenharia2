@@ -21,4 +21,6 @@ from aa import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
+    url(r'^cadastro_usuario/$', views.cadastro_usuario, name='cadastro_usuario'),
+    url(r'^acesso_negado/$', views.index, name='acesso_negado')
 ]

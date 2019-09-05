@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'bases/base.html' %}
 {% load static %}
 {% csrf_token %}
 {% block body_block %}
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="middle aligned column">
-                    <div class="ui big button">
+                    <div class="ui big button abrir_cadastro_usuario">
                         <i class="signup icon"></i>
                         Cadastre-se
                     </div>
@@ -41,6 +41,8 @@
             </div>
         </div>
     </div>
+
+    {% include 'cadastros/modalCadastroUsuario.html' %}
 {% endblock %}
 
 

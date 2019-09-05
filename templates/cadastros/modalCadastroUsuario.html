@@ -1,0 +1,115 @@
+<div class="ui modal modalCadastroUsuario">
+    <i class="close icon"></i>
+    <div class="header">
+        <i class="ui user default inverted circular icon"></i> Cadastro de Usuário
+    </div>
+    <div class="modalpadrao">
+        <form class="ui form" id="usuario_form" name="usuarioform" method="post" action="/cadastro_usuario/">
+            {% csrf_token %}
+
+            <div class="field">
+                <label>Nome</label>
+                <div class="ui corner labeled input">
+                    {{ form.nome }}
+                    {% if form.nome.errors %}
+                    <div class="ui pointing red basic label">
+                        {{ form.nome.errors }}
+                    </div>
+                    {% endif %}
+                    <div class="ui corner label">
+                        <i class="asterisk icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>CPF</label>
+                <div class="ui corner labeled input">
+                    {{ form.cpf }}
+                    {% if form.cpf.errors %}
+                    <div class="ui pointing red basic label">
+                        {{ form.cpf.errors }}
+                    </div>
+                    {% endif %}
+                    <div class="ui corner label">
+                        <i class="asterisk icon"></i>
+                    </div>
+                </div>
+                <div id="msgcpf"></div>
+            </div>
+
+            <div class="field">
+                <label>Data Nascimento</label>
+                <div class="ui corner labeled input">
+                    {{ form.data_nascimento }}
+                    {% if form.data_nascimento.errors %}
+                    <div class="ui pointing red basic label">
+                        {{ form.data_nascimento.errors }}
+                    </div>
+                    {% endif %}
+                    <div class="ui corner label">
+                        <i class="asterisk icon"></i>
+                    </div>
+                </div>
+                <div id="msgdata"></div>
+            </div>
+
+            <div class="field">
+                <label>Telefone</label>
+                <div class="ui corner labeled input">
+                    {{ form.telefone }}
+                    {% if form.telefone.errors %}
+                    <div class="ui pointing red basic label">
+                        {{ form.telefone.errors }}
+                    </div>
+                    {% endif %}
+                    <div class="ui corner label">
+                        <i class="asterisk icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>E-mail</label>
+                <div class="ui corner labeled input">
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                    <div class="ui pointing red basic label">
+                        {{ form.email.errors }}
+                    </div>
+                    {% endif %}
+                    <div class="ui corner label">
+                        <i class="asterisk icon"></i>
+                    </div>
+                </div>
+                <div id="msgemail"></div>
+            </div>
+
+            <div class="field">
+                <label>Senha</label>
+                <div class="ui corner labeled input">
+                    {{ form.senha }}
+                    {% if form.senha.errors %}
+                    <div class="ui pointing red basic label">
+                        {{ form.senha.errors }}
+                    </div>
+                    {% endif %}
+                    <div class="ui corner label">
+                        <i class="asterisk icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Confirmação de Senha</label>
+                <div class="ui corner labeled input">
+                    <input type="password" name="senha" id="senha">
+                    <div class="ui corner label">
+                        <i class="asterisk icon"></i>
+                    </div>
+                </div>
+            </div>
+            {% include 'blocos/botao_form.html' %}
+        </form>
+    </div>
+</div>

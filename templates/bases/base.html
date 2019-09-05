@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+{% include 'blocos/head.html' %}
+<body class="meio_inicio">
+    <div class="bloco_inicio">
+        {% block body_block %}
+        {% endblock %}
+        {% include 'blocos/footer.html' %}
+    </div>
+</body>
+
+</html>
+
+
+

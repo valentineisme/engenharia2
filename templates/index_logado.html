@@ -1,0 +1,33 @@
+{% extends 'bases/base_logado.html' %}
+{% load static %}
+{% block body_block %}
+    <div class="padrao">
+        <div class="ui center aligned placeholder segment">
+        <h2 class="ui center aligned icon header">
+            <i class="circular users icon"></i>
+                Perfil
+            </h2>
+            <table class="ui center aligned table">
+                <tr>
+                    <td>{{ usuario.nome }}</td>
+                    <td>{{ usuario.cpf }}</td>
+                </tr>
+                <tr>
+                    <td>{{ usuario.telefone }}</td>
+                    <td>{{ usuario.data_nascimento }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{ usuario.email }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button class="ui button editar_usuario" onclick="usuario_editar({{ usuario.id }});">Editar Perfil</button>
+                    <button class="ui button">Mudar Senha</button></td>
+                </tr>
+            </table>
+    </div>
+    </div>
+
+    {% include 'cadastros/modalEditarUsuario.html' %}
+{% endblock %}
+
+

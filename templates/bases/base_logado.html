@@ -5,6 +5,7 @@
 <body class="meio_inicio">
     <div class="bloco_inicio">
         <img class="imagem_logo" src="{% static 'media/logo/logo.png' %}"/>
+        {% include 'menus/menu_logado.html' %}
         {% block body_block %}
         {% endblock %}
         {% include 'blocos/footer.html' %}

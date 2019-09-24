@@ -4,7 +4,7 @@ function VerificaCPF() {
         document.getElementById("msgcpf").innerHTML = "";
     } else {
         errors = "1";
-        document.getElementById("msgcpf").innerHTML = "<font color='red'>CPF inválido </font>";
+        document.getElementById("msgcpf").innerHTML = "<font color='red'>CPF invalido </font>";
         document.retorno = (errors == '');
     }
 }
@@ -39,18 +39,26 @@ function VerificaData() {
         document.getElementById("msgdata").innerHTML = "";
     } else {
         errors = "1";
-        document.getElementById("msgdata").innerHTML = "<font color='red'>Data Inválida </font>";
+        document.getElementById("msgdata").innerHTML = "<font color='red'>Data Invalida </font>";
         document.retorno = (errors == '');
     }
 }
 
+// function VerificaData_Edit() {
+//     if (validardataDeNascimento(document.usuarioform_edit.data_nascimento.value)) {
+//         document.getElementById("msgdata").innerHTML = "";
+//     } else {
+//         errors = "1";
+//         document.getElementById("msgdata").innerHTML = "<font color='red'>Data Invalida </font>";
+//         document.retorno = (errors == '');
+//     }
+// }
+
 function validardataDeNascimento(data) {
 
     dataAtual = new Date();
-
     data = new Date(data);
-
-    if (data < dataAtual) {
+    if ((data < dataAtual)){
         console.log("Data Válida");
         return true;
     } else {
@@ -94,7 +102,7 @@ function VerificaEmail() {
         document.getElementById("msgemail").innerHTML = "";
     } else {
         errors = "1";
-        document.getElementById("msgemail").innerHTML = "<font color='red'>E-mail inválido </font>";
+        document.getElementById("msgemail").innerHTML = "<font color='red'>E-mail invalido </font>";
         document.retorno = (errors == '');
     }
 }
@@ -129,4 +137,25 @@ function validarSenha(){
        }
 
    }
+}
+
+function usuario_editar(id) {
+    $.ajax({
+        type: 'GET',
+        url: '/perfil/editar/',
+        data: {
+            us: id,
+            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+        },
+        dataType: 'json',
+        success: function (data) {
+            $("input#id_nome").attr('value', data[0].fields['nome']);
+            $("input#id_telefone").attr('value', data[0].fields['telefone']);
+            $("input#id_data_nascimento").attr('value', data[0].fields['data_nascimento']);
+            $("input#id_usuario").attr('value', data[0].pk);
+        },
+        error: function (xhr, errmsg) {
+            console.log(xhr.status + ": " + xhr.responseText + "Error: " + errmsg);
+        }
+    });
 }

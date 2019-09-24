@@ -22,5 +22,11 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
     url(r'^cadastro_usuario/$', views.cadastro_usuario, name='cadastro_usuario'),
-    url(r'^acesso_negado/$', views.index, name='acesso_negado')
+    url(r'^acesso_negado/$', views.index, name='acesso_negado'),
+    url(r'^logar/$', views.validacao, name='logar'),
+    url(r'^sair/$', views.sair, name='sair'),
+
+    url(r'^perfil/editar/$', views.usuario_editar, name='usuario_editar'),
+    url(r'^editar_usuario_final/$', views.usuario_editar_final, name='editar_usuario_final'),
+
 ]

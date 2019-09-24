@@ -1,6 +1,5 @@
 {% extends 'bases/base.html' %}
 {% load static %}
-{% csrf_token %}
 {% block body_block %}
     <div class="padrao">
         <div class="ui center aligned placeholder segment"><h1 class="ui header">Auto Auction, o seu leilão pessoal.</h1></div>
@@ -8,21 +7,25 @@
             <div class="ui two column very relaxed stackable grid">
                 <div class="column">
                     <div class="ui form">
-                        <div class="field">
-                            <label>E-mail</label>
-                            <div class="ui left icon input">
-                                <input type="text" placeholder="email">
-                                <i class="user icon"></i>
+                        <form class="ui form" method="post" action="/logar/">
+                            {% csrf_token %}
+                            <div class="field">
+                                <label>E-mail</label>
+                                <div class="ui left icon input">
+                                    <input type="text" name="email" value="{{email}}" placeholder="email">
+                                    <i class="user icon"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="field">
-                            <label>Senha</label>
-                            <div class="ui left icon input">
-                                <input type="password" placeholder="senha">
-                                <i class="lock icon"></i>
+                            <div class="field">
+                                <label>Senha</label>
+                                <div class="ui left icon input">
+                                    <input type="password" name="senha" value="{{senha}}" placeholder="senha">
+                                    <i class="lock icon"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="ui black submit button">Logar</div>
+                            <button class="ui black submit button">Logar</button>
+                            <font color='red'>{{ mensagem }}</font>
+                        </form>
                     </div>
                 </div>
                 <div class="middle aligned column">

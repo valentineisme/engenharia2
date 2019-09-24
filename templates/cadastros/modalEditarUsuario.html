@@ -1,0 +1,58 @@
+<div class="ui modal modalEditarUsuario">
+    <i class="close icon"></i>
+    <div class="header">
+        <i class="ui user default inverted circular icon"></i> Editar Usuário
+    </div>
+    <div class="modalpadrao">
+        <form class="ui form" id="usuario_form" name="usuarioform" method="post" action="/editar_usuario_final/" >
+            {% csrf_token %}
+            <div class="field">
+                <label>Nome</label>
+                <div class="ui corner labeled input">
+                    {{ form.nome }}
+                    {% if form.nome.errors %}
+                    <div class="ui pointing red basic label">
+                        {{ form.nome.errors }}
+                    </div>
+                    {% endif %}
+                    <div class="ui corner label">
+                        <i class="asterisk icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Data Nascimento</label>
+                <div class="ui corner labeled input">
+                    {{ form.data_nascimento }}
+                    {% if form.data_nascimento.errors %}
+                    <div class="ui pointing red basic label">
+                        {{ form.data_nascimento.errors }}
+                    </div>
+                    {% endif %}
+                    <div class="ui corner label">
+                        <i class="asterisk icon"></i>
+                    </div>
+                </div>
+                <div id="msgdata"></div>
+            </div>
+
+            <div class="field">
+                <label>Telefone</label>
+                <div class="ui corner labeled input">
+                    {{ form.telefone }}
+                    {% if form.telefone.errors %}
+                    <div class="ui pointing red basic label">
+                        {{ form.telefone.errors }}
+                    </div>
+                    {% endif %}
+                    <div class="ui corner label">
+                        <i class="asterisk icon"></i>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" id="id_usuario" name="id_usuario">
+            {% include 'blocos/botao_form.html' %}
+        </form>
+    </div>
+</div>

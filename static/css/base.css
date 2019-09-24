@@ -12,11 +12,15 @@ footer{
 
 .bloco_inicio{
     padding-left: 19%;
-    padding-top: 10%;
 }
 .bloco_inicio_error{
     padding-left: 19%;
     padding-top: 1%;
+}
+
+.imagem_logo{
+    padding-left: 29%;
+
 }
 
 .meio_inicio{

@@ -1,0 +1,17 @@
+<div class="ui three bottom attached buttons botao_inferior">
+    <button class="ui editarVeic button ui-tooltip" data-tooltip="Editar" onclick="">
+        <i class="ui write black large icon adm_img"></i>
+    </button>
+    {% if dado.status %}
+        <button type="submit" class="ui leiloarVeic button ui-tooltip" data-tooltip="Leiloar" disabled="">
+        leilão
+    </button>
+    {% else %}
+    <button type="submit" class="ui leiloarVeic button ui-tooltip" data-tooltip="Leiloar" onclick="leiloar({{ dado.id }});" >
+        <i class="ui thumbs up large icon adm_img"></i>
+    </button>
+    {% endif %}
+    <button type="submit" class="ui excluirVeic button ui-tooltip" data-tooltip="Excluir" onclick="" >
+        <i class="ui trash red large icon adm_img"></i>
+    </button>
+</div>

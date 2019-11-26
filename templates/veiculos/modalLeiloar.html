@@ -1,0 +1,25 @@
+<div class="ui modal modalLeiloar">
+    <i class="close icon"></i>
+    <div class="header">
+        <i class="ui user default inverted circular icon"></i> Leilão:
+    </div>
+    <div class="modalpadrao">
+        <form action="leiloando/" method="post">
+            {% csrf_token %}
+        Data Final: <input type="date" name="data_final" min="{{data_atual}}" max ="{{data_final}}" required>
+        <table class="ui striped celled unstackable table" id="tabela_lista">
+            <tfoot>
+            <tr>
+                <th colspan="5">
+                    obs. leilão de no máximo 30 dias.
+                    <div class="ui right floated pagination secondary menu">
+                            <button class="ui labeled icon button"><i class="ui thumbs up icon"></i>Leiloar </button>
+                    </div>
+                </th>
+            </tr>
+            </tfoot>
+            <input type="hidden" id="id_veic" name="id_veic">
+        </table>
+        </form>
+    </div>
+</div>

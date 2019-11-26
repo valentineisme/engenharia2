@@ -10,6 +10,19 @@ footer{
     margin: 30px;
 }
 
+.table.veiculos_table tr td{
+    padding: 5px !important;
+}
+
+.observacao_veic{
+    width: 80% !important;
+}
+
+#id_observacao{
+    width: 100% !important;
+    height: 20% !important;
+}
+
 .bloco_inicio{
     padding-left: 19%;
 }

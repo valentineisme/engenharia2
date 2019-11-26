@@ -1,0 +1,67 @@
+{% extends 'bases/base_logado.html' %}
+{% load static %}
+{% block body_block %}
+{% csrf_token %}
+<div class="padrao">
+    <div class="ui center aligned placeholder segment">
+        <article class="ui centered cards" id="div_veic">
+            {% if dados %}
+            {% for dado in dados %}
+
+            <div class="ui card">
+                <div class="image">
+                    <span id="corner{{ dado.id }}"></span>
+                    <img class="imagem_article" src="{% static 'media/' %}{{dado.veiculo_id.img}}">
+                </div>
+                <div class="content">
+                    <a class="header">{{ dado.veiculo_id.modelo }} - {{ dado.veiculo_id.modelo.marca }} ({{ dado.veiculo_id.ano_veiculo }})</a>
+                    <div class="item">
+                       Placa: {{ dado.veiculo_id.placa }} <br>
+                       Valor Inicial: {{ dado.veiculo_id.valor }}<br>
+                       Valor Atual: {{ dado.valor_atual }}<br>
+                       Status: {{ dado.status }}<br>
+                       Prazo: {{ dado.data_final }}<br>
+                    </div>
+                    <div class="ui divided list">
+                        {% include "../blocos/botao_leilao_ativo.html" %}
+                        {% include 'veiculos/modal_leilao_ativo.html' %}
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="ui card">
+                nenhum leilão.
+            </div>
+            {% endif %}
+        </article>
+        <table class="ui striped celled unstackable table" id="tabela_lista">
+            <tfoot>
+            <tr>
+                <th colspan="5">
+                    <div class="ui right floated pagination secondary menu">
+                        {% if dados.has_previous %}
+                            <a href="?page={{ dados.previous_page_number }}" class="icon item">
+                                <i class="left chevron icon"></i>
+                            </a>
+                        {% endif %}
+                        <a class="item">Página {{ dados.number }} de {{ dados.paginator.num_pages }}</a>
+                        {% if dados.has_next %}
+                            <a href="?page={{ dados.next_page_number }}" class="icon item">
+                                <i class="right chevron icon"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+{% include 'cadastros/form_veiculos.html' %}
+
+{% endblock %}
+
+

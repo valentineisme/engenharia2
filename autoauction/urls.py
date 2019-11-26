@@ -29,4 +29,15 @@ urlpatterns = [
     url(r'^perfil/editar/$', views.usuario_editar, name='usuario_editar'),
     url(r'^editar_usuario_final/$', views.usuario_editar_final, name='editar_usuario_final'),
 
+    url(r'^cadastro_veiculo/$', views.cadastro_veiculo, name='cadastro_veiculo'),
+    url(r'^leiloar_veiculo/$', views.leiloar_veiculo, name='leiloar_veiculo'),
+    url(r'^leiloar_veiculo/leiloando/$', views.leiloando, name='leiloando'),
+    url(r'^em_leilao/$', views.em_leilao, name='em_leilao'),
+    url(r'^leilao_ativo/$', views.leilao_ativo, name='leilao_ativo'),
+    url(r'^leilao_ativo/ativar/$', views.leilao_ativar, name='leilao_ativar'),
+
+    url(r'^lances/$', views.lances, name='lances'),
+
+    url(r'^ajax/pesquisa/$', views.ajax_pesquisa, name='ajax_pesquisa'),
+
 ]

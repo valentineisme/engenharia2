@@ -1,6 +1,7 @@
 {% extends 'bases/base_logado.html' %}
 {% load static %}
 {% block body_block %}
+{% csrf_token %}
     <div class="padrao">
         <div class="ui center aligned placeholder segment">
         <h2 class="ui center aligned icon header">
@@ -28,6 +29,7 @@
     </div>
 
     {% include 'cadastros/modalEditarUsuario.html' %}
+    {% include 'cadastros/form_veiculos.html' %}
 {% endblock %}
 
 

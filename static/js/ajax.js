@@ -44,16 +44,6 @@ function VerificaData() {
     }
 }
 
-// function VerificaData_Edit() {
-//     if (validardataDeNascimento(document.usuarioform_edit.data_nascimento.value)) {
-//         document.getElementById("msgdata").innerHTML = "";
-//     } else {
-//         errors = "1";
-//         document.getElementById("msgdata").innerHTML = "<font color='red'>Data Invalida </font>";
-//         document.retorno = (errors == '');
-//     }
-// }
-
 function validardataDeNascimento(data) {
 
     dataAtual = new Date();
@@ -158,4 +148,38 @@ function usuario_editar(id) {
             console.log(xhr.status + ": " + xhr.responseText + "Error: " + errmsg);
         }
     });
+}
+
+function marca_para_modelo() {
+    if ($("select#marcas").val() == 'selecione') {
+        var options = '<option>Selecione primeiro uma marca</option>';
+        $("select#modelo").html(options);
+        $("select#modelo").attr('disabled', true);
+
+    } else {
+        $.ajax({
+            type: 'GET',
+            url: '/ajax/pesquisa/',
+            data: {
+                marca: $("select#marcas").val(),
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            dataType: 'json',
+            success: function (data) {
+                var options = '<option>Selecione um modelo</option>';
+                for (var i = 0; i < data.length; i++) {
+                    options += '<option value="' + data[i].pk + '">' + data[i].fields['nome'] + '</option>';
+                }
+                $("select#modelo").html(options);
+                $("select#modelo").attr('disabled', false);
+            },
+            error: function (xhr, errmsg) {
+                console.log(xhr.status + ": " + xhr.responseText + "Error: " + errmsg);
+            }
+        });
+    }
+}
+
+function leiloar(id) {
+    $("input#id_veic").attr('value', id);
 }

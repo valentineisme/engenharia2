@@ -1,0 +1,27 @@
+<div class="ui modal modalLeilaoAtivo">
+    <i class="close icon"></i>
+    <div class="header">
+        <i class="ui user default inverted circular icon"></i> Leilão:
+    </div>
+    <div class="modalpadrao">
+        <form action="/leilao_ativo/ativar/" method="post">
+            {% csrf_token %}
+        Propor Valor: <input type="text" name="valor_proposto"required>
+        <table class="ui striped celled unstackable table" id="tabela_lista">
+            <tfoot>
+            <tr>
+                <th colspan="5">
+                    obs. leilão termina em {{ dado.data_final }}.<br>
+                    ultimo lance dado: R$ {{ dado.valor_atual }}<br>
+                    se seu lance for menos que o lance atual, lance não será contabilizado.
+                    <div class="ui right floated pagination secondary menu">
+                            <button class="ui labeled icon button"><i class="ui thumbs up icon"></i>Propor </button>
+                    </div>
+                </th>
+            </tr>
+            </tfoot>
+            <input type="hidden" id="id_leilao" name="id_leilao" value="{{ dado.id }}">
+        </table>
+        </form>
+    </div>
+</div>

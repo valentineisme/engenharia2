@@ -43,16 +43,6 @@ class usuario(models.Model):
     def __str__(self):
         return self.nome
 
-class modelo_carro(models.Model):
-    nome = models.CharField(max_length=128)
-
-    class Meta:
-        verbose_name = 'Modelo Carro'
-        verbose_name_plural = 'Modelos Carros'
-
-    def __str__(self):
-        return self.nome
-
 class marca_carro(models.Model):
     nome = models.CharField(max_length=128)
 
@@ -63,9 +53,20 @@ class marca_carro(models.Model):
     def __str__(self):
         return self.nome
 
+class modelo_carro(models.Model):
+    nome = models.CharField(max_length=128)
+    marca = models.ForeignKey(marca_carro, on_delete=models.CASCADE, null=True)
+
+    class Meta:
+        verbose_name = 'Modelo Carro'
+        verbose_name_plural = 'Modelos Carros'
+
+    def __str__(self):
+        return self.nome
+
 class veiculos(models.Model):
     modelo = models.ForeignKey(modelo_carro, on_delete=models.CASCADE)
-    marca = models.ForeignKey(marca_carro, on_delete=models.CASCADE)
+    usuario_id = models.ForeignKey(usuario, on_delete=models.CASCADE, null=True)
     ano_veiculo = models.CharField(max_length=128)
     cor = models.CharField(max_length=128)
     combustivel = models.CharField(max_length=128)
@@ -81,4 +82,20 @@ class veiculos(models.Model):
      verbose_name_plural = 'Veiculos'
 
     def __str__(self):
-     return self.modelo
+     return self.placa
+
+class leilao(models.Model):
+    veiculo_id = models.ForeignKey(veiculos, on_delete=models.CASCADE)
+    usuario_id = models.ForeignKey(usuario, on_delete=models.CASCADE, null=False)
+    status = models.CharField(max_length=128, null = False)
+    data_inicio = models.DateField(blank=True, null=False)
+    data_final = models.DateField(blank=True,null=False)
+    valor_atual = models.CharField(max_length=128, null=True)
+    usuario_id_comprador = models.CharField(max_length=128, null = True)
+
+    class Meta:
+        verbose_name = "Leilao"
+        verbose_name_plural = "Leiloes"
+
+    def __str__(self):
+        return self.status

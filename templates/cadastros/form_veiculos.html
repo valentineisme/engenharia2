@@ -1,0 +1,196 @@
+<div class="ui modal modalVeiculo">
+    <i class="close icon"></i>
+    <div class="header">
+        <i class="ui user default inverted circular icon"></i> Cadastro de Veículos
+    </div>
+    <div class="modalpadrao">
+        <form class="ui form" method="post" action="/cadastro_veiculo/">
+                                    {% csrf_token %}
+
+            <div class="ui center aligned placeholder segment">
+                <table class="ui center aligned table veiculos_table">
+                    <tr>
+                        <td><label>Marca do Veículo</label></td>
+                        <td colspan="2"><label>Modelo do Veículo</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="field">
+                                <div class="ui corner labeled input">
+                                    <select name="marcas" id="marcas" onchange="marca_para_modelo();">
+                                        <option value="selecione">----------------</option>
+                                        {% for m in marcas %}
+                                        <option value="{{ m.id }}">{{m.nome}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="field">
+                                <div class="ui corner labeled input">
+                                    <select name="modelo" id="modelo" disabled="True">
+                                        <option value="selecione">Selecione primeiro uma marca</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Ano do Veículo</label></td>
+                        <td colspan="2"><label>Cor do Veículo</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="field">
+                                <div class="ui corner labeled input">
+                                    {{ form_veic.ano_veiculo }}
+                                    {% if form_veic.ano_veiculo.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_veic.ano_veiculo.errors }}
+                                    </div>
+                                    {% endif %}
+                                    <div class="ui corner label">
+                                        <i class="asterisk icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="field">
+                                <div class="ui corner labeled input">
+                                    {{ form_veic.cor }}
+                                    {% if form_veic.cor.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_veic.cor.errors }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Placa</label></td>
+                        <td colspan="2"><label>Combustível</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="field">
+                                <div class="ui corner labeled input">
+                                    {{ form_veic.placa }}
+                                    {% if form_veic.placa.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_veic.placa.errors }}
+                                    </div>
+                                    {% endif %}
+                                    <div class="ui corner label">
+                                        <i class="asterisk icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="field">
+                                <div class="ui corner labeled input">
+                                    {{ form_veic.combustivel }}
+                                    {% if form_veic.combustivel.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_veic.combustivel.errors }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Valor</label></td>
+                        <td><label>IPVA</label></td>
+                        <td><label>Documentação</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="field">
+                                <div class="ui corner labeled input">
+                                    {{ form_veic.valor }}
+                                    {% if form_veic.valor.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_veic.valor.errors }}
+                                    </div>
+                                    {% endif %}
+                                    <div class="ui corner label">
+                                        <i class="asterisk icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <div class="ui corner labeled input">
+                                    {{ form_veic.ipva }}
+                                    {% if form_veic.ipva.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_veic.ipva.errors }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <div class="ui corner labeled input">
+                                    {{ form_veic.documentacao }}
+                                    {% if form_veic.documentacao.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_veic.documentacao.errors }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div class="field">
+                                <div class="ui corner labeled input">
+                                    {{ form_veic.img }}
+                                    {% if form_veic.img.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_veic.img.errors }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><label>Observações</label></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div class="field ">
+                                <div class="ui corner labeled input observacao_veic">
+                                    {{ form_veic.observacao }}
+                                    {% if form_veic.observacao.errors %}
+                                    <div class="ui pointing red basic label">
+                                        {{ form_veic.observacao.errors }}
+                                    </div>
+                                    {% endif %}
+                                    <div class="ui corner label">
+                                        <i class="asterisk icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            {% include 'blocos/botao_form.html' %}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+
+
